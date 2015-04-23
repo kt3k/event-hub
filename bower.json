@@ -1,0 +1,27 @@
+{
+  "name": "event-hub",
+  "main": "event-hub.js",
+  "version": "0.1.0",
+  "authors": [
+    "Yoshiya Hinosawa <stibium121@gmail.com>"
+  ],
+  "description": "dom as an event hub",
+  "keywords": [
+    "custom-class",
+    "pubsub",
+    "event",
+    "event-hub"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "~2.1.3",
+    "custom-class": "~1.0.1"
+  }
+}

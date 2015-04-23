@@ -1,0 +1,60 @@
+
+
+<script src="./bower_components/jquery/dist/jquery.js"></script>
+<script src="./bower_components/custom-class/custom-class.js"></script>
+
+<script src="./event-hub.js"></script>
+
+
+
+<h2>event-hub DEMO</h2>
+
+<p>Click on the "div"s below and see the source code!</p>
+
+
+
+<div class="event-hub" channel="click">
+    div.event-hub
+
+    <div>
+        DIV 1<br />
+    </div>
+
+    <div class="sub-click">
+        DIV 2, which subscribes to "click" event<br />
+    </div>
+
+    <div>
+        DIV 3<br />
+    </div>
+
+</div>
+
+
+
+
+
+
+<script>
+$(function () {
+    $('.event-hub > div').click(function () {
+
+        $(this).append(' clicked');
+
+    });
+});
+</script>
+
+
+
+<style>
+.event-hub > div {
+    margin: 15px;
+}
+
+div {
+    border-radius: 8px;
+    border: solid 1px #999;
+    padding: 15px;
+}
+</style>

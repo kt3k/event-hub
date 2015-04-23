@@ -1,0 +1,6 @@
+---
+version: 1.0.0
+files:
+  README.md: v%.%.%
+  bower.json: '"version": "%.%.%"'
+  event-hub.js: v%.%.%

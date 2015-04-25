@@ -79,15 +79,15 @@
             // mark the event processed
             e._eventHubProcessed = true;
 
-            var targets = $('.sub-' + channel, $elem);
+            var extraArgs = Array.prototype.slice.call(arguments, 1);
 
-            targets.each(function () {
+            $elem.find('.sub-' + channel).each(function () {
 
                 // if the original target is the same as subscriber
                 // then don't trigger it again
                 if (this !== e.target) {
 
-                    $(this).trigger(e);
+                    $(this).trigger(e, extraArgs);
 
                 }
 

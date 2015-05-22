@@ -36,10 +36,10 @@
 
         var channels = this.$elem.attr('channels') || this.$elem.attr('channel');
 
-        console.log(channels);
-
         if (!channels) {
+
             return [];
+
         }
 
         return channels.replace(/^\s*|\s*$/g, '').split(/\s+/);

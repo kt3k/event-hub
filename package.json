@@ -1,0 +1,19 @@
+{
+  "name": "event-hub",
+  "version": "2.0.2",
+  "description": "event-hub on a dom tree",
+  "main": "event-hub.js",
+  "scripts": {
+    "test": "karma start karma.conf.js --single-run"
+  },
+  "keywords": [
+    "class-component",
+    "event",
+    "event",
+    "hub",
+    "event",
+    "bus"
+  ],
+  "author": "Yoshiya Hinosawa <stibium121@gmail.com> (https://twitter.com/kt3k)",
+  "license": "MIT"
+}

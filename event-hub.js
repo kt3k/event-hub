@@ -70,14 +70,8 @@
 
         $elem.on(channel, function (e) {
 
-            // if the event is already processed by the hub
-            // then don't broadcast it again
-            if (e._eventHubProcessed) {
-                return;
-            }
-
-            // mark the event processed
-            e._eventHubProcessed = true;
+            // published events don't propagate anymore
+            e.stopPropagation();
 
             var extraArgs = Array.prototype.slice.call(arguments, 1);
 

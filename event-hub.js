@@ -70,9 +70,6 @@
 
         $elem.on(channel, function (e) {
 
-            // published events don't propagate anymore
-            e.stopPropagation();
-
             var extraArgs = Array.prototype.slice.call(arguments, 1);
 
             $elem.find('.sub-' + channel).each(function () {
@@ -81,7 +78,7 @@
                 // then don't trigger it again
                 if (this !== e.target) {
 
-                    $(this).trigger(e, extraArgs);
+                    $(this).triggerHandler(e, extraArgs);
 
                 }
 

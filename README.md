@@ -1,4 +1,4 @@
-# event-hub v2.0.5
+# event-hub v2.0.5 [![Build Status](https://travis-ci.org/kt3k/event-hub.svg?branch=master)](https://travis-ci.org/kt3k/event-hub)
 
 > dom as an event hub
 

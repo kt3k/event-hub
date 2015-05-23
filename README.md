@@ -2,13 +2,13 @@
 
 > dom as an event hub
 
-***note*** `event-hub` depends on `jQuery` and [custom-class](https://github.com/kt3k/custom-class).
+***note*** `event-hub` depends on `jQuery` and [class-component](https://github.com/kt3k/class-component).
 
 # Usage
 
 ```html
 <script src="path/to/jquery.js"></script>
-<script src="path/to/custom-class.js"></script>
+<script src="path/to/class-component.js"></script>
 <script src="path/to/event-hub.js"></script>
 
 

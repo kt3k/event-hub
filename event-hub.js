@@ -1,5 +1,5 @@
 /**
- * event-hub.js v2.0.3
+ * event-hub.js v2.0.4
  * author: Yoshiya Hinosawa ( https://github.com/kt3k )
  * license: MIT
  */

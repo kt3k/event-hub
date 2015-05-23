@@ -4,7 +4,8 @@
   "description": "event-hub on a dom tree",
   "main": "event-hub.js",
   "scripts": {
-    "test": "karma start karma.conf.js --single-run"
+    "test": "karma start karma.conf.js --single-run",
+    "ci": "karma start karma.conf.js --single-run --browsers PhantomJS"
   },
   "keywords": [
     "class-component",
@@ -25,6 +26,7 @@
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.1.12",
     "karma-mocha": "^0.1.10",
+    "karma-phantomjs-launcher": "^0.1.4",
     "karma-sinon": "^1.0.4",
     "mocha": "^2.2.5",
     "sinon": "^1.14.1"

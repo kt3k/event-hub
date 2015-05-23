@@ -1,4 +1,4 @@
-# event-hub v2.0.2
+# event-hub v2.0.3
 
 > dom as an event hub
 

@@ -8,7 +8,7 @@
 (function ($) {
     'use strict';
 
-    $.registerClassComponent('event-hub', function () {
+    $.CC.register('event-hub', function () {
 
         var ehub = new EventHub(this);
 

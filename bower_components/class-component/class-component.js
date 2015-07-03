@@ -1,5 +1,5 @@
 /**
- * class-component.js v3.0.1
+ * class-component.js v4.0.0
  * author: Yoshiya Hinosawa ( http://github.com/kt3k )
  * license: MIT
  */
@@ -7,12 +7,6 @@
 
 (function ($) {
     'use strict';
-
-    if (typeof $ === 'undefined') {
-
-        throw new Error('jQuery unavailable. class-component.js depends on jQuery. Load jQuery in global scope before this library.');
-
-    }
 
 
     /**
@@ -71,6 +65,16 @@
         });
 
     };
+
+
+
+    /**
+     * The main namespace for class component modules.
+     */
+    $.CC = $.registerClassComponent;
+
+
+    $.CC.register = $.registerClassComponent;
 
 
     /**
@@ -169,4 +173,4 @@
 
     };
 
-}(window.jQuery));
+}(jQuery));

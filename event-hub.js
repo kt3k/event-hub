@@ -9,77 +9,82 @@
     'use strict';
 
     /**
-     */
-    function EventHub(elem) {
-
-        this.elem = elem;
-
-        this.bindEvents();
-
-    };
-
-    var pt = EventHub.prototype;
-
-    /**
-     * Gets channels.
+     * EventHub is a coelement which forms event-hub class-component.
      *
-     * @return {Array}
+     * see README for details.
      */
-    pt.channels = function () {
+    var EventHub = $.cc.subclass(function (pt) {
 
-        var channels = this.elem.attr('channels') || this.elem.attr('channel');
+        pt.constructor = function (elem) {
 
-        if (!channels) {
+            this.elem = elem;
 
-            return [];
+            this.bindEvents();
 
-        }
+        };
 
-        return channels.replace(/^\s*|\s*$/g, '').split(/\s+/);
+        /**
+         * Gets channels.
+         *
+         * @return {Array}
+         */
+        pt.channels = function () {
 
-    };
+            var channels = this.elem.attr('channels') || this.elem.attr('channel');
+
+            if (!channels) {
+
+                return [];
+
+            }
+
+            return channels.replace(/^\s*|\s*$/g, '').split(/\s+/);
+
+        };
 
 
-    /**
-     * Binds events.
-     */
-    pt.bindEvents = function () {
+        /**
+         * Binds events.
+         */
+        pt.bindEvents = function () {
 
-        this.channels().forEach(this.bindEventsForChannel, this);
+            this.channels().forEach(this.bindEventsForChannel, this);
 
-    };
+        };
 
 
-    /**
-     * Binds to the given event (channel).
-     *
-     * The handler publish the event to the subscribers.
-     *
-     * @private
-     */
-    pt.bindEventsForChannel = function (channel) {
+        /**
+         * Binds to the given event (channel).
+         *
+         * The handler publish the event to the subscribers.
+         *
+         * @private
+         */
+        pt.bindEventsForChannel = function (channel) {
 
-        var elem = this.elem;
+            var elem = this.elem;
 
-        elem.on(channel, function (e) {
+            elem.on(channel, function (e) {
 
-            var extraArgs = Array.prototype.slice.call(arguments, 1);
+                var extraArgs = Array.prototype.slice.call(arguments, 1);
 
-            elem.find('.sub-' + channel).each(function () {
+                elem.find('.sub-' + channel).each(function () {
 
-                // if the original target is the same as subscriber
-                // then don't trigger it again
-                if (this !== e.target) {
+                    // if the original target is the same as subscriber
+                    // then don't trigger it again
+                    if (this !== e.target) {
 
-                    $(this).triggerHandler(e, extraArgs);
+                        $(this).triggerHandler(e, extraArgs);
 
-                }
+                    }
+
+                });
 
             });
 
-        });
+        };
 
-    };
+    });
 
     $.cc.assign('event-hub', EventHub);
 

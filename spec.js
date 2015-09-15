@@ -9,7 +9,7 @@ require('./');
 
 describe('event-hub', function () {
 
-    beforeEach(function (done) {
+    beforeEach(function () {
 
         this.$hub = $('<div class="event-hub" channel="foo bar" />').appendTo(document.body);
 
@@ -19,9 +19,7 @@ describe('event-hub', function () {
 
         this.$kid3 = $('<div class="" />').appendTo(this.$hub);
 
-        $(document).trigger('init-class.event-hub');
-
-        setTimeout(done, 30);
+        $.cc.init();
 
     });
 

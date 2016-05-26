@@ -1,8 +1,8 @@
 ---
-version: 4.1.0
+version: 5.0.0
 commit: 'chore(version): :arrow_heading_up: bump to v%.%.%'
 files:
   README.md: v%.%.%
   bower.json: '"version": "%.%.%"'
   package.json: '"version": "%.%.%"'
-  event-hub.js: v%.%.%
+  src/event-hub.js: v%.%.%

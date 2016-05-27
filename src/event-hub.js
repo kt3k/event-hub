@@ -4,6 +4,8 @@
  * license: MIT
  */
 
+const $ = jQuery
+
 /**
  * EventHub is a coelement which forms event-hub class-component.
  *

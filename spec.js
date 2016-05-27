@@ -1,6 +1,7 @@
 'use strict';
 
-var $ = global.jQuery = require('jquery');
+const $ = global.$ = global.jQuery = require('jquery');
+const expect = require('chai').expect
 
 require('class-component');
 

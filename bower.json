@@ -1,7 +1,7 @@
 {
   "name": "event-hub",
   "main": "event-hub.js",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "authors": [
     "Yoshiya Hinosawa <stibium121@gmail.com>"
   ],

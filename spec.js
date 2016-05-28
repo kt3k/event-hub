@@ -1,12 +1,11 @@
 'use strict';
 
-const $ = global.$ = global.jQuery = require('jquery');
+const $ = global.jQuery = require('jquery');
 const expect = require('chai').expect
 
 require('class-component');
 
-require('./');
-
+require('./src/event-hub');
 
 describe('event-hub', function () {
 

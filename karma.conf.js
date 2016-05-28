@@ -1,15 +1,9 @@
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
-    basePath: '',
     frameworks: ['mocha', 'sinon', 'browserify'],
     files: ['spec.js'],
     preprocessors: {'spec.js': 'browserify'},
-    browserify: {
-      debug: true,
-      transform: [
-        'babelify'
-      ]
-    },
+    browserify: {debug: true, transform: ['babelify']},
     reporters: ['progress'],
     port: 9876,
     colors: true,

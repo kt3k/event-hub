@@ -6,6 +6,7 @@
   "scripts": {
     "test": "karma start karma.conf.js --single-run",
     "ci": "karma start karma.conf.js --single-run --browsers PhantomJS",
+    "lint": "standard",
     "dist": "browserify -t babelify src/event-hub.js -o dist/event-hub.js"
   },
   "keywords": [
@@ -32,11 +33,24 @@
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-sinon": "^1.0.4",
     "mocha": "^2.2.5",
-    "sinon": "^1.14.1"
+    "sinon": "^1.14.1",
+    "standard": "^8.6.0"
   },
   "babel": {
     "presets": [
       "es2015"
+    ]
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ],
+    "global": [
+      "sinon",
+      "jQuery"
+    ],
+    "ignore": [
+      "dist"
     ]
   }
 }

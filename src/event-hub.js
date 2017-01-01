@@ -13,32 +13,32 @@ const $ = jQuery
  */
 class EventHub {
 
-    constructor(elem) {
-        this.elem = elem
+  constructor (elem) {
+    this.elem = elem
 
-        this.bindEvents()
-    }
+    this.bindEvents()
+  }
 
     /**
      * Gets channels.
      * @return {Array}
      */
-    channels() {
-        const channels = this.elem.attr('channels') || this.elem.attr('channel')
+  channels () {
+    const channels = this.elem.attr('channels') || this.elem.attr('channel')
 
-        if (!channels) {
-            return []
-        }
-
-        return channels.replace(/^\s*|\s*$/g, '').split(/\s+/)
+    if (!channels) {
+      return []
     }
+
+    return channels.replace(/^\s*|\s*$/g, '').split(/\s+/)
+  }
 
     /**
      * Binds events.
      */
-    bindEvents() {
-        this.channels().forEach(this.bindEventsForChannel, this)
-    }
+  bindEvents () {
+    this.channels().forEach(this.bindEventsForChannel, this)
+  }
 
     /**
      * Binds to the given event (channel).
@@ -46,22 +46,19 @@ class EventHub {
      * The handler publish the event to the subscribers.
      * @private
      */
-    bindEventsForChannel(channel) {
-        const elem = this.elem
+  bindEventsForChannel (channel) {
+    const elem = this.elem
 
-        elem.on(channel, function (e) {
-
-            const extraArgs = Array.prototype.slice.call(arguments, 1)
-
-            elem.find('.sub-' + channel).each(function () {
+    elem.on(channel, function (e) {
+      elem.find('.sub-' + channel).each(function () {
                 // if the original target is the same as subscriber
                 // then don't trigger it again
-                if (this !== e.target) {
-                    $(this).triggerHandler(e, extraArgs)
-                }
-            })
-        })
-    }
+        if (this !== e.target) {
+          this.dispatchEvent(new CustomEvent(e.type, { detail: e.detail }))
+        }
+      })
+    })
+  }
 }
 
-$.cc('event-hub', EventHub);
+$.cc('event-hub', EventHub)

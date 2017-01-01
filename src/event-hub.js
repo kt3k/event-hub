@@ -19,10 +19,10 @@ class EventHub {
     this.bindEvents()
   }
 
-    /**
-     * Gets channels.
-     * @return {Array}
-     */
+  /**
+   * Gets channels.
+   * @return {Array}
+   */
   channels () {
     const channels = this.elem.attr('channels') || this.elem.attr('channel')
 
@@ -33,19 +33,19 @@ class EventHub {
     return channels.replace(/^\s*|\s*$/g, '').split(/\s+/)
   }
 
-    /**
-     * Binds events.
-     */
+  /**
+   * Binds events.
+   */
   bindEvents () {
     this.channels().forEach(this.bindEventsForChannel, this)
   }
 
-    /**
-     * Binds to the given event (channel).
-     *
-     * The handler publish the event to the subscribers.
-     * @private
-     */
+  /**
+   * Binds to the given event (channel).
+   *
+   * The handler publish the event to the subscribers.
+   * @private
+   */
   bindEventsForChannel (channel) {
     const elem = this.elem
 

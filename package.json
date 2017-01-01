@@ -5,7 +5,6 @@
   "main": "dist/event-hub.js",
   "scripts": {
     "test": "karma start karma.conf.js --single-run",
-    "ci": "karma start karma.conf.js --single-run --browsers PhantomJS",
     "lint": "standard",
     "dist": "browserify -t babelify src/event-hub.js -o dist/event-hub.js"
   },

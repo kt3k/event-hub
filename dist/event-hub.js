@@ -6,7 +6,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
- * event-hub.js v5.0.1
+ * event-hub.js v5.1.0
  * author: Yoshiya Hinosawa ( https://github.com/kt3k )
  * license: MIT
  */
@@ -20,70 +20,67 @@ var $ = jQuery;
  */
 
 var EventHub = function () {
-    function EventHub(elem) {
-        _classCallCheck(this, EventHub);
+  function EventHub(elem) {
+    _classCallCheck(this, EventHub);
 
-        this.elem = elem;
+    this.elem = elem;
 
-        this.bindEvents();
+    this.bindEvents();
+  }
+
+  /**
+   * Gets channels.
+   * @return {Array}
+   */
+
+
+  _createClass(EventHub, [{
+    key: 'channels',
+    value: function channels() {
+      var channels = this.elem.attr('channels') || this.elem.attr('channel');
+
+      if (!channels) {
+        return [];
+      }
+
+      return channels.replace(/^\s*|\s*$/g, '').split(/\s+/);
     }
 
     /**
-     * Gets channels.
-     * @return {Array}
+     * Binds events.
      */
 
+  }, {
+    key: 'bindEvents',
+    value: function bindEvents() {
+      this.channels().forEach(this.bindEventsForChannel, this);
+    }
 
-    _createClass(EventHub, [{
-        key: 'channels',
-        value: function channels() {
-            var channels = this.elem.attr('channels') || this.elem.attr('channel');
+    /**
+     * Binds to the given event (channel).
+     *
+     * The handler publish the event to the subscribers.
+     * @private
+     */
 
-            if (!channels) {
-                return [];
-            }
+  }, {
+    key: 'bindEventsForChannel',
+    value: function bindEventsForChannel(channel) {
+      var elem = this.elem;
 
-            return channels.replace(/^\s*|\s*$/g, '').split(/\s+/);
-        }
+      elem.on(channel, function (e) {
+        elem.find('.sub-' + channel).each(function () {
+          // if the original target is the same as subscriber
+          // then don't trigger it again
+          if (this !== e.target) {
+            this.dispatchEvent(new CustomEvent(e.type, { detail: e.detail }));
+          }
+        });
+      });
+    }
+  }]);
 
-        /**
-         * Binds events.
-         */
-
-    }, {
-        key: 'bindEvents',
-        value: function bindEvents() {
-            this.channels().forEach(this.bindEventsForChannel, this);
-        }
-
-        /**
-         * Binds to the given event (channel).
-         *
-         * The handler publish the event to the subscribers.
-         * @private
-         */
-
-    }, {
-        key: 'bindEventsForChannel',
-        value: function bindEventsForChannel(channel) {
-            var elem = this.elem;
-
-            elem.on(channel, function (e) {
-
-                var extraArgs = Array.prototype.slice.call(arguments, 1);
-
-                elem.find('.sub-' + channel).each(function () {
-                    // if the original target is the same as subscriber
-                    // then don't trigger it again
-                    if (this !== e.target) {
-                        $(this).triggerHandler(e, extraArgs);
-                    }
-                });
-            });
-        }
-    }]);
-
-    return EventHub;
+  return EventHub;
 }();
 
 $.cc('event-hub', EventHub);

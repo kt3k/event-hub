@@ -1,6 +1,8 @@
-# event-hub v5.1.0 [![Build Status](https://travis-ci.org/kt3k/event-hub.svg?branch=master)](https://travis-ci.org/kt3k/event-hub)
+# event-hub v5.1.0
 
 > dom as an event hub
+
+[![CircleCI](https://circleci.com/gh/kt3k/event-hub.svg?style=svg)](https://circleci.com/gh/kt3k/event-hub)
 
 ***note*** `event-hub` depends on `jQuery` and [class-component](https://github.com/kt3k/class-component).
 

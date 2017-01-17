@@ -47,8 +47,8 @@ If the event `ch_i` bubbles up to the above `event-hub` dom, then it dispatches 
 
 You need to call `def` of classcaps to use event-hub.
 
-```
-const { def } = require('classcaps'
+```js
+const { def } = require('classcaps')
 const EventHub = require('event-hub')
 
 def('event-hub', EventHub)

@@ -1,27 +1,29 @@
 'use strict'
 
-const $ = global.jQuery = require('jquery')
+const $ = require('jquery')
 const expect = require('chai').expect
 
-const cc = global.cc = require('classcaps')
+const cc = require('classcaps')
 
-require('./src/event-hub')
+cc.def('event-hub', require('./src/event-hub'))
+
+let $hub, $kid0, $kid1, $kid2, $kid3
 
 describe('event-hub', function () {
   beforeEach(function () {
-    this.$hub = $('<div class="event-hub" channel="foo bar" />').appendTo(document.body)
+    $hub = $('<div class="event-hub" channel="foo bar" />').appendTo(document.body)
 
-    this.$kid0 = $('<div class="sub-foo sub-bar" />').appendTo(this.$hub)
-    this.$kid1 = $('<div class="sub-foo" />').appendTo(this.$hub)
-    this.$kid2 = $('<div class="" />').appendTo(this.$hub)
+    $kid0 = $('<div class="sub-foo sub-bar" />').appendTo($hub)
+    $kid1 = $('<div class="sub-foo" />').appendTo($hub)
+    $kid2 = $('<div class="" />').appendTo($hub)
 
-    this.$kid3 = $('<div class="" />').appendTo(this.$hub)
+    $kid3 = $('<div class="" />').appendTo($hub)
 
     cc.init()
   })
 
   afterEach(function () {
-    this.$hub.remove()
+    $hub.remove()
   })
 
   it('publishes events of a child to subscribers', function (done) {
@@ -32,15 +34,15 @@ describe('event-hub', function () {
     var spy2foo = sinon.spy()
     var spy2bar = sinon.spy()
 
-    this.$kid0.on('foo', spy0foo)
-    this.$kid0.on('bar', spy0bar)
-    this.$kid1.on('foo', spy1foo)
-    this.$kid1.on('bar', spy1bar)
-    this.$kid2.on('foo', spy2foo)
-    this.$kid2.on('bar', spy2bar)
+    $kid0.on('foo', spy0foo)
+    $kid0.on('bar', spy0bar)
+    $kid1.on('foo', spy1foo)
+    $kid1.on('bar', spy1bar)
+    $kid2.on('foo', spy2foo)
+    $kid2.on('bar', spy2bar)
 
-    this.$kid3[0].dispatchEvent(new CustomEvent('foo', { bubbles: true }))
-    this.$kid3[0].dispatchEvent(new CustomEvent('bar', { bubbles: true }))
+    $kid3[0].dispatchEvent(new CustomEvent('foo', { bubbles: true }))
+    $kid3[0].dispatchEvent(new CustomEvent('bar', { bubbles: true }))
 
     setTimeout(function () {
       expect(spy0foo.called).to.be.true
@@ -55,19 +57,19 @@ describe('event-hub', function () {
   })
 
   it('publishes events of itself to subscribers', function (done) {
-    this.$kid0.on('foo', function () {
+    $kid0.on('foo', function () {
       done()
     })
 
-    this.$hub[0].dispatchEvent(new CustomEvent('foo', { bubbles: true }))
+    $hub[0].dispatchEvent(new CustomEvent('foo', { bubbles: true }))
   })
 
   it('publish events and they do not propagate anymore when published', function (done) {
     var spy = sinon.spy()
 
-    this.$hub.on('foo', spy)
+    $hub.on('foo', spy)
 
-    this.$kid3.trigger('foo')
+    $kid3.trigger('foo')
 
     setTimeout(function () {
       expect(spy.calledOnce).to.be.true

@@ -1,6 +1,6 @@
 ---
-version: 5.1.0
-commit: ':bookmark: chore(version): bump to v%.%.%'
+version: 6.0.0
+commit: ":bookmark: chore(version): bump to v%.%.%"
 files:
   README.md: v%.%.%
   package.json: '"version": "%.%.%"'

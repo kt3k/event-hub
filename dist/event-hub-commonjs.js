@@ -1,8 +1,7 @@
-(function () {
 'use strict';
 
 /**
- * event-hub.js v6.2.0
+ * event-hub.js v6.1.0
  * author: Yoshiya Hinosawa ( https://github.com/kt3k )
  * license: MIT
  */
@@ -60,11 +59,5 @@ EventHub.prototype.bindEventsForChannel = function bindEventsForChannel (channel
   });
 };
 
-if (typeof self === 'undefined' || self.cc == null) {
-  throw new Error('window.cc is not available: event-hub needs classcaps object as window.cc')
-}
-
-self.cc.def('event-hub', EventHub);
-
-}());
+module.exports = EventHub;
 

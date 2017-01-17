@@ -1,6 +1,6 @@
 {
   "name": "event-hub",
-  "version": "6.0.0",
+  "version": "6.1.0",
   "description": "event-hub on a dom tree",
   "main": "dist/event-hub.js",
   "scripts": {

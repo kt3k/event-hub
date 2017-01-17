@@ -6,7 +6,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
- * event-hub.js v6.0.0
+ * event-hub.js v6.1.0
  * author: Yoshiya Hinosawa ( https://github.com/kt3k )
  * license: MIT
  */
@@ -82,6 +82,10 @@ var EventHub = function () {
   return EventHub;
 }();
 
-cc.def('event-hub', EventHub);
+if (typeof self !== 'undefined' && self.cc) {
+  cc.def('event-hub', EventHub);
+} else if (typeof module !== 'undefined' && module.exports) {
+  module.exports = EventHub;
+}
 
 },{}]},{},[1]);

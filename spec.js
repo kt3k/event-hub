@@ -1,11 +1,11 @@
 'use strict'
 
-const $ = require('jquery')
-const expect = require('chai').expect
+import EventHub from './src/event-hub'
+import $ from 'jquery'
+import { expect } from 'chai'
+import { def, init } from 'classcaps'
 
-const cc = require('classcaps')
-
-cc.def('event-hub', require('./src/event-hub'))
+def('event-hub', EventHub)
 
 let $hub, $kid0, $kid1, $kid2, $kid3
 
@@ -19,7 +19,7 @@ describe('event-hub', function () {
 
     $kid3 = $('<div class="" />').appendTo($hub)
 
-    cc.init()
+    init()
   })
 
   afterEach(function () {

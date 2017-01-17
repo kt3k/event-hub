@@ -5,11 +5,11 @@
  */
 
 /**
- * EventHub is a coelement which forms event-hub class-component.
+ * EventHub is a coelement which forms event-hub component.
  *
  * see README for details.
  */
-class EventHub {
+export default class EventHub {
 
   __init__ () {
     this.bindEvents()
@@ -46,8 +46,8 @@ class EventHub {
   bindEventsForChannel (channel) {
     const el = this.el
 
-    el.addEventListener(channel, function (e) {
-      Array.prototype.forEach.call(el.querySelectorAll('.sub-' + channel), function (subscriber) {
+    el.addEventListener(channel, e => {
+      [].forEach.call(el.querySelectorAll('.sub-' + channel), subscriber => {
         // if the original target is the same as subscriber
         // then don't trigger it again
         if (subscriber !== e.target) {
@@ -56,10 +56,4 @@ class EventHub {
       })
     })
   }
-}
-
-if (typeof self !== 'undefined' && self.cc) {
-  cc.def('event-hub', EventHub)
-} else if (typeof module !== 'undefined' && module.exports) {
-  module.exports = EventHub
 }

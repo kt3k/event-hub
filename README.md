@@ -1,6 +1,6 @@
 # event-hub v6.1.0
 
-> dom as an event hub
+> event hub on a dom tree
 
 [![CircleCI](https://circleci.com/gh/kt3k/event-hub.svg?style=svg)](https://circleci.com/gh/kt3k/event-hub)
 
@@ -32,7 +32,27 @@ With the above settings, all the `click` events which occur under the `.event-hu
 
 See the [DEMO](https://kt3k.github.io/event-hub/test.html).
 
+# API
 
+```html
+<tag class="event-hub" channel="ch0 ch1 ... ch_N"></tag>
+```
+
+- @class `event-hub` is the component name. You need to specify the class name in dom.
+- @param {string[]} ch0, ch1,..., ch_N The channel which the event hub brokes.
+
+If the event `ch_i` bubbles up to the above `event-hub` dom, then it dispatches the event to its children which has `sub-ch_i` class in it.
+
+## Node API
+
+You need to call `def` of classcaps to use event-hub.
+
+```
+const { def } = require('classcaps'
+const EventHub = require('event-hub')
+
+def('event-hub', EventHub)
+```
 
 # License
 

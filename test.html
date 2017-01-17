@@ -1,5 +1,4 @@
-<script src="./node_modules/jquery/dist/jquery.js"></script>
-<script src="./node_modules/class-component/dist/class-component.js"></script>
+<script src="./node_modules/classcaps/dist/classcaps.min.js"></script>
 <script src="./dist/event-hub.js"></script>
 
 <h2>event-hub DEMO</h2>
@@ -24,10 +23,10 @@
 </div>
 
 <script>
-$(function () {
-  $('.event-hub > div').click(function () {
-    $(this).append(' clicked');
-  });
+[].forEach.call(document.querySelectorAll('.event-hub > div'), function (el) {
+  el.addEventListener('click', function () {
+    el.appendChild(new Text(' clicked'));
+  })
 });
 </script>
 

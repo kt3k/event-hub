@@ -9,7 +9,7 @@
     "dist": "browserify -t babelify src/event-hub.js -o dist/event-hub.js"
   },
   "keywords": [
-    "class-component",
+    "classcaps",
     "event",
     "event",
     "hub",
@@ -23,8 +23,7 @@
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
     "chai": "^2.3.0",
-    "class-component": "^7.0.0",
-    "jquery": "^2.1.4",
+    "classcaps": ">=0.1.2",
     "karma": "^0.12.32",
     "karma-browserify": "^4.2.1",
     "karma-chrome-launcher": "^0.1.12",

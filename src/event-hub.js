@@ -4,8 +4,6 @@
  * license: MIT
  */
 
-const $ = jQuery
-
 /**
  * EventHub is a coelement which forms event-hub class-component.
  *
@@ -13,9 +11,7 @@ const $ = jQuery
  */
 class EventHub {
 
-  constructor (elem) {
-    this.elem = elem
-
+  __init__ () {
     this.bindEvents()
   }
 
@@ -24,7 +20,7 @@ class EventHub {
    * @return {Array}
    */
   channels () {
-    const channels = this.elem.attr('channels') || this.elem.attr('channel')
+    const channels = this.el.getAttribute('channels') || this.el.getAttribute('channel')
 
     if (!channels) {
       return []
@@ -45,20 +41,21 @@ class EventHub {
    *
    * The handler publish the event to the subscribers.
    * @private
+   * @param {string} channel The channel to listen
    */
   bindEventsForChannel (channel) {
-    const elem = this.elem
+    const el = this.el
 
-    elem.on(channel, function (e) {
-      elem.find('.sub-' + channel).each(function () {
-                // if the original target is the same as subscriber
-                // then don't trigger it again
-        if (this !== e.target) {
-          this.dispatchEvent(new CustomEvent(e.type, { detail: e.detail }))
+    el.addEventListener(channel, function (e) {
+      Array.prototype.forEach.call(el.querySelectorAll('.sub-' + channel), function (subscriber) {
+        // if the original target is the same as subscriber
+        // then don't trigger it again
+        if (subscriber !== e.target) {
+          subscriber.dispatchEvent(new CustomEvent(e.type, { detail: e.detail }))
         }
       })
     })
   }
 }
 
-$.cc('event-hub', EventHub)
+cc.def('event-hub', EventHub)

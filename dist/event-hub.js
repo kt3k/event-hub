@@ -11,33 +11,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * license: MIT
  */
 
-var $ = jQuery;
-
 /**
  * EventHub is a coelement which forms event-hub class-component.
  *
  * see README for details.
  */
-
 var EventHub = function () {
-  function EventHub(elem) {
+  function EventHub() {
     _classCallCheck(this, EventHub);
-
-    this.elem = elem;
-
-    this.bindEvents();
   }
 
-  /**
-   * Gets channels.
-   * @return {Array}
-   */
-
-
   _createClass(EventHub, [{
+    key: '__init__',
+    value: function __init__() {
+      this.bindEvents();
+    }
+
+    /**
+     * Gets channels.
+     * @return {Array}
+     */
+
+  }, {
     key: 'channels',
     value: function channels() {
-      var channels = this.elem.attr('channels') || this.elem.attr('channel');
+      var channels = this.el.getAttribute('channels') || this.el.getAttribute('channel');
 
       if (!channels) {
         return [];
@@ -61,19 +59,20 @@ var EventHub = function () {
      *
      * The handler publish the event to the subscribers.
      * @private
+     * @param {string} channel The channel to listen
      */
 
   }, {
     key: 'bindEventsForChannel',
     value: function bindEventsForChannel(channel) {
-      var elem = this.elem;
+      var el = this.el;
 
-      elem.on(channel, function (e) {
-        elem.find('.sub-' + channel).each(function () {
+      el.addEventListener(channel, function (e) {
+        Array.prototype.forEach.call(el.querySelectorAll('.sub-' + channel), function (subscriber) {
           // if the original target is the same as subscriber
           // then don't trigger it again
-          if (this !== e.target) {
-            this.dispatchEvent(new CustomEvent(e.type, { detail: e.detail }));
+          if (subscriber !== e.target) {
+            subscriber.dispatchEvent(new CustomEvent(e.type, { detail: e.detail }));
           }
         });
       });
@@ -83,6 +82,6 @@ var EventHub = function () {
   return EventHub;
 }();
 
-$.cc('event-hub', EventHub);
+cc.def('event-hub', EventHub);
 
 },{}]},{},[1]);

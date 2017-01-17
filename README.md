@@ -4,12 +4,11 @@
 
 [![CircleCI](https://circleci.com/gh/kt3k/event-hub.svg?style=svg)](https://circleci.com/gh/kt3k/event-hub)
 
-***note*** `event-hub` depends on `jQuery` and [class-component](https://github.com/kt3k/class-component).
+***note*** `event-hub` depends on [classcaps](https://github.com/kt3k/classcaps).
 
 # Usage
 
 ```html
-<script src="path/to/jquery.js"></script>
 <script src="path/to/class-component.js"></script>
 <script src="path/to/event-hub.js"></script>
 

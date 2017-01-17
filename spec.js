@@ -3,7 +3,7 @@
 const $ = global.jQuery = require('jquery')
 const expect = require('chai').expect
 
-require('class-component')
+const cc = global.cc = require('classcaps')
 
 require('./src/event-hub')
 
@@ -17,7 +17,7 @@ describe('event-hub', function () {
 
     this.$kid3 = $('<div class="" />').appendTo(this.$hub)
 
-    $.cc.init()
+    cc.init()
   })
 
   afterEach(function () {
@@ -39,8 +39,8 @@ describe('event-hub', function () {
     this.$kid2.on('foo', spy2foo)
     this.$kid2.on('bar', spy2bar)
 
-    this.$kid3.trigger('foo')
-    this.$kid3.trigger('bar')
+    this.$kid3[0].dispatchEvent(new CustomEvent('foo', { bubbles: true }))
+    this.$kid3[0].dispatchEvent(new CustomEvent('bar', { bubbles: true }))
 
     setTimeout(function () {
       expect(spy0foo.called).to.be.true
@@ -59,7 +59,7 @@ describe('event-hub', function () {
       done()
     })
 
-    this.$hub.trigger('foo')
+    this.$hub[0].dispatchEvent(new CustomEvent('foo', { bubbles: true }))
   })
 
   it('publish events and they do not propagate anymore when published', function (done) {
@@ -71,8 +71,8 @@ describe('event-hub', function () {
 
     setTimeout(function () {
       expect(spy.calledOnce).to.be.true
-            // this means foo events of $hub fired only once
-            // which means foo event on $kid0 and $kid1 didn't propagate to the parent(= $hub)
+      // this means foo events of $hub fired only once
+      // which means foo event on $kid0 and $kid1 didn't propagate to the parent(= $hub)
 
       done()
     }, 30)

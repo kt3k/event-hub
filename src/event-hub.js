@@ -58,4 +58,8 @@ class EventHub {
   }
 }
 
-cc.def('event-hub', EventHub)
+if (typeof self !== 'undefined' && self.cc) {
+  cc.def('event-hub', EventHub)
+} else if (typeof module !== 'undefined' && module.exports) {
+  module.exports = EventHub
+}

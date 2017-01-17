@@ -41,11 +41,12 @@
   },
   "standard": {
     "env": [
-      "mocha"
+      "mocha",
+      "browser"
     ],
     "global": [
       "sinon",
-      "jQuery"
+      "cc"
     ],
     "ignore": [
       "dist"

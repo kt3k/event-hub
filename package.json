@@ -1,8 +1,8 @@
 {
   "name": "event-hub",
-  "version": "6.2.1",
+  "version": "6.2.2",
   "description": "event-hub on a dom tree",
-  "main": "dist/event-hub-common.js",
+  "main": "dist/event-hub-commonjs.js",
   "scripts": {
     "test": "karma start karma.conf.js --single-run",
     "lint": "standard",

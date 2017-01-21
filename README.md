@@ -1,4 +1,4 @@
-# event-hub v6.2.1
+# event-hub v6.2.2
 
 > event hub on a dom tree
 

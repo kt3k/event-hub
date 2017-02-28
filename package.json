@@ -35,7 +35,7 @@
     "mocha": "^3.2.0",
     "rollup": "^0.41.4",
     "sinon": "^1.14.1",
-    "standard": "^8.6.0",
+    "standard": "^9.0.0",
     "uglify-js": "^2.7.5"
   },
   "babel": {
